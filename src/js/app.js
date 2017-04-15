@@ -86,11 +86,15 @@ import _ from 'lodash';
 //=================================================================================================================================
 //video 62
 import Main from './components/main'
+import Timer from './components/Timer'
+import Countdown  from './components/Countdown'
 import { Perdu } from './components/weather/Whoops404'
 
   render (
  <Router history={hashHistory}>
    <Route path="/" component={ Main }>
+     <Route path="countdown" component={Countdown} />
+     <IndexRoute  component={Timer} />
      <Route path="*" component={Perdu} />
    </Route>
  </Router>

@@ -3,6 +3,11 @@ import ReactDOM from "react-dom";
 const { render, findDOMNode  } = ReactDOM;
 import Navigation from './Nav'
 
+
+
+
+
+
 const Main = React.createClass({
   //
   componentDidMount(){  ///est
@@ -19,7 +24,7 @@ const Main = React.createClass({
           <div>
             <Navigation />
             <p>Main Rendered</p>
-            
+            {this.props.children}
           </div>
         </div>
       </div>

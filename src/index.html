@@ -218,15 +218,47 @@ origin  https://github.com/axe-z/ReactStuff.git (push)</li>
     <li>lancer git status, pour voir tous les fichier inclut (optionnel)</li>
     <li>lancer git add .</li>
     <li>lancer git commit -a -m 'Initial commit'</li>
-    <li>Se rendre sur le site de github</li>
+    <li>Se rendre sur le site de github pour creer un nouveau repo</li>
+    <li>A la page du quick setup, et on veut l option qui push du command line: on copy et paste : git remote add origin https://github.com/axe-z/ReactTimer.git
+git push -u origin master</li>
+     <li>Une fois fait, il s agit seulement de rafraichir la page et le repo devrait maintenant est rempli de mes fichiers.</li>
+     <li>fin</li>
     <pre><code>
+
+      pour updater son projet
+      dans l ordre :
+
+      git status
+      git add .     //si nouveau fichier
+      git status
+      git commit -am 'message'
+      git push
 
     </code></pre>
   </div>
 
+<div class="section">
+  <h2>Comment ajouter un projet heroku ( si compte ouvert )</h2>
+  <li>Ca se fait dans le termianl sans avoir a aller sur le site de heroku</li>
+  <li>D abord lancer heroku create</li>
+  <li>pour verifier si ca fonctionne et qu il a ete chercher la bonne chose sur git:  git remote -v</li>
+  <li>ensuite pour envoyer : git push heroku master</li>
+  <li>il ne reste qu a lancer heroku (attendre 10 sec): heroku open</li>
+  <pre><code>
+
+  donc :
+  heroku create
+   git remote -v
+  git push heroku master
+  heroku open
+
+  </code></pre>
+</div>
+
+
 
 <div class="section">
-  <h2>Heroku</h2>
+  <h2>Heroku pour la premiere fois</h2>
   <li>Une fois l installer fait, dans le terminal , lancer heroku</li>
   <li>pour savoir qui est loguer: heroku auth:whoami</li>
   <li>tout est installé.</li>
@@ -235,7 +267,7 @@ origin  https://github.com/axe-z/ReactStuff.git (push)</li>
   <li>heroku create , va creer une place pour l app</li>
   <li>de git a heroku : git push heroku master</li>
   <li>heroku open , va ouvrir le site</li>
-  <li></li>
+  <li>fin</li>
   <pre><code>
 
 
@@ -254,7 +286,97 @@ heroku open
 </div>
 
 
+<div class="section">
+  <h2>Testing avec MJ</h2>
+  <li>puisque react divise en plusieurs pieces, il devient difficile de savoir si un changement entraine pas des sequelles</li>
+  <li>Donc il est imporetant d'incorporer du testing avec Mickeal Jacson expect .. oui oui</li>
+  <li>https://github.com/mjackson/expect</li>
+  <li>voici quelques exemples.. </li>
+  <pre><code>
+disont ...
 
+function add (a,b){
+ return a + b;
+}
+expect(add(2,2)).toEqual(4, 'sinon t as chier ca')
+//ou
+expect(add(2,2)).toBe(4, 'sinon t as chier ca')
+
+
+ expect(2).toBeA('number')
+
+ function capitaliser(mot){
+  if(!mot || typeof mot !== 'string'){
+    mot = ''
+  }
+   return _.capitalize(mot)
+ }
+
+ expect(capitaliser('benoit')).toBe('Benoit')
+ expect(capitaliser('benoit')).toBeA('string')
+
+    toExist
+
+    expect(object).toExist([message])
+    Asserts the given object is truthy.
+
+    expect('something truthy').toExist()
+    Aliases:
+
+    toBeTruthy
+    toNotExist
+
+    expect(object).toNotExist([message])
+    Asserts the given object is falsy.
+
+    expect(null).toNotExist()
+    Aliases:
+
+    toBeFalsy
+    toBe
+
+    expect(object).toBe(value, [message])
+    Asserts that object is strictly equal to value using ===.
+
+    toNotBe
+
+    expect(object).toNotBe(value, [message])
+    Asserts that object is not strictly equal to value using ===.
+
+    toEqual
+
+    expect(object).toEqual(value, [message])
+    Asserts that the given object equals value using is-equal.
+
+    toNotEqual
+
+    expect(object).toNotEqual(value, [message])
+    Asserts that the given object is not equal to value using is-equal.
+
+    suite sur le site
+  </code></pre>
+</div>
+
+<div class="section">
+  <h2>Unit testing avec Karma</h2>
+  <li>installation: npm install karma@0.13.22 karma-chrome-launcher@0.2.2 karma-mocha@0.2.2 karma-mocha-reporter@2.0.0 karma-sourcemap-loader@0.3.7 karma-webpack@1.7.0 mocha@2.4.5 expect@1.14.0 --save-dev </li>
+  <li>une fois fait, on doit faire un fichier karma.conf.js , et un rep tests, dans celui ci des fichiers , type genre nom.test.js</li>
+  <li>importer expect, et faire un it('shouldbe a test', () 1 tobe 1 ..   )</li>
+  <li>dans package.json, avoir un script qui lance karam start ...</li>
+  <li>npm run test</li>
+  <pre><code>
+  app.test.js :
+import expect
+
+
+describe('App', () => {
+  it('should properly run tests', () => {
+    expect(1).toBe(1);
+  })
+})
+
+  </code></pre>
+</div>
 
 </div>
 

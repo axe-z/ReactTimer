@@ -230,7 +230,7 @@ p {
   margin-top: 0;
   z-index: 10;
   width: 98%;
-  height: 70px;
+  height: 60px;
   background: #2f2f2f; }
   .navbar li {
     float: left;
@@ -241,8 +241,8 @@ p {
     font-weight: 100;
     font-size: 14px;
     padding: 10px 15px;
-    font-family: "NexaThin";
-    width: 150px;
+    font-family: "NexaRegular";
+    width: 130px;
     display: inline-block;
     text-align: center;
     margin-top: 15px;
@@ -254,7 +254,7 @@ p {
   .navbar .lien:first-child {
     margin-left: -50px;
     font-family: "NexaBlack";
-    color: #ad00ad; }
+    color: #0188cb; }
   .navbar .droite {
     color: #c7c7c7;
     font-weight: 100;
@@ -273,6 +273,18 @@ p {
     letter-spacing: 0px;
     transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out; }
-    .navbar .droite span {
+    .navbar .droite span a {
       margin-left: 10px;
-      color: #ad00ad; }
+      display: inline-block;
+      text-decoration: none;
+      color: #0188cb; }
+
+.countdown h1 {
+  color: #777;
+  letter-spacing: 0px;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out; }
+  .countdown h1:hover {
+    color: #323131;
+    cursor: pointer;
+    letter-spacing: 2px; }
