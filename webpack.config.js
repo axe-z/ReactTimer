@@ -77,7 +77,7 @@ module.exports = {
       devtool: 'source-map',
      plugins: [
        new HtmlWebpackPlugin({
-         title: 'React complete 7g',
+         title: 'React',
          minify: {
            collapseWhitespace: true
          },

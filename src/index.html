@@ -363,7 +363,7 @@ expect(add(2,2)).toBe(4, 'sinon t as chier ca')
   <li>une fois fait, on doit faire un fichier karma.conf.js , et un rep tests, dans celui ci des fichiers , type genre nom.test.js</li>
   <li>importer expect, et faire un it('shouldbe a test', () 1 tobe 1 ..   )</li>
   <li>dans package.json, avoir un script qui lance karam start ...</li>
-  <li>npm run test</li>
+  <li>npm test  et non pas run test</li>
   <pre><code>
   app.test.js :
 import expect
@@ -377,6 +377,36 @@ describe('App', () => {
 
   </code></pre>
 </div>
+
+<div class="section">
+  <h2>installer un addons de react</h2>
+  <li>npm install react-addons-test-utils --save-dev </li>
+  <li>dans le rep tests, on fait un rep components, pour faire un mirroir de notre projet.</li>
+  <li>En bas on regarde ce que ca l air</li>
+  <li>utiliser mocha:</li>
+  <pre><code>
+importer
+    React from "react";
+    ReactDOM from "react-dom";
+    expect from 'expect'
+    { findDOMNode  } = ReactDOM;
+    TestUtils from 'react-addons-test-utils';
+    Clock from '../../js/components/Clock'
+
+
+    describe('render', () => {
+      it('devrait render clock to output', () => {
+          let clock = TestUtils.renderIntoDocument(<Clock totalSecondes={62}/>); //appele le component
+          let $el = $(findDOMNode(clock));  //on le selectionne avec  jquery
+          var actualText = $el.find('.clock-text').text();  //on li le text, et bon ca devrait etre '01:02'
+
+          expect(actualText).toBe('01:02')
+      });
+    })
+  </code></pre>
+</div>
+
+
 
 </div>
 

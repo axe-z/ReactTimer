@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 const { render, findDOMNode  } = ReactDOM;
-
+import Clock from './Clock'
 
 const Countdown = React.createClass({
   componentDidMount(){  ///est
@@ -13,8 +13,9 @@ const Countdown = React.createClass({
       },
   render() {
     return (
-      <div className="countdown">
-        <h1>Countdown component</h1>
+      <div className="component">
+        <Clock totalSecondes={129} />
+        <h1 className="countdown">Countdown component</h1>
       </div>
     )
   }
