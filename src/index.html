@@ -391,9 +391,16 @@ importer
     expect from 'expect'
     { findDOMNode  } = ReactDOM;
     TestUtils from 'react-addons-test-utils';
-    Clock from '../../js/components/Clock'
+    Clock from '../../js/components/Clock'   /// !!!! ON DOIT FAIRE LE PATH COMPLET.... !!!!
 
 
+  // plus simple
+   describe('Clock', () => {
+     it('should existe', () => {
+       expect(Clock).toExist()
+     })
+
+//utile maintenant
     describe('render', () => {
       it('devrait render clock to output', () => {
           let clock = TestUtils.renderIntoDocument(<Clock totalSecondes={62}/>); //appele le component
@@ -406,6 +413,14 @@ importer
   </code></pre>
 </div>
 
+
+<div class="section">
+  <h2>Une fois pour tout REACT et comment passer le data</h2>
+  <p>Dans le component child, celui qui sera ramener sur la parent, prennons une form child, qui ira sur le parent. Sur la forme il y aura un onSubmit, onChange, qui lancera une fonction justement, dans cette form, on rammasse la valeur des inputs, que l on met dans une variable. Dans cette function onsubmit, on va passer un that.props.nomDefunctionQuiSeraSurLeParent avec en parathese les variables des inputs, en fait le data.  en temps que props, sur l'element child il s'agit maintenant de faire un fonction HANDLE qui prend les variables fait sur le child, qui elle va changer un state, qu on aura fait avec getinitialstate sur le parent, disont compteur, qu on initialise a 0. Dans la function handle, on fera un setstate compteur: variableChild qu on a ramener de l autre fonction submit. Fin</p>
+  <pre><code>
+
+  </code></pre>
+</div>
 
 
 </div>
