@@ -7,6 +7,12 @@ import Controls from './Controls';
 
 
 const Countdown = React.createClass({
+ // createPerson(){  ///possible d'ajouter du data on this. mais ca reste ici, sur le fichier,
+ //   this.axe = {
+ //      prenom: 'Benoit',
+ //      nom: 'Lafrance'
+ //    }
+ // },
   getInitialState(){
     return  {
      count: 0,   ///on fait un state, pour mofier une etat, 'est comme ca qu on doit rafraichhir le data
@@ -41,15 +47,15 @@ const Countdown = React.createClass({
            case  'stopped' :
            this.setState({count: 0})
            case  'paused' :
-           clearInterval(this.timer)
-           this.timmer = 'undefined'
+           clearInterval( this.timer )  //this.timer , est pour avoir acces ici dnas le switch.
+           this.timer = 'undefined'
            break
          }
        }
       },
     startTimer(){
 
-         this.timer = setInterval(() => {
+        this.timer = setInterval(() => {   //this.timer , est pour avoir acces ailleurs, pour l arreter.
         let newCount = this.state.count - 1;
         this.setState({
           count: newCount >= 0 ? newCount : 0
@@ -60,7 +66,7 @@ const Countdown = React.createClass({
     componentWillUpdate(){   ///va animer au moment que le state change  === componentDidUpdate pour anim
         let node =  findDOMNode(this);  ///retourne tout le div.
         TweenMax.from(node,0.99,{
-          scale: 1.004,
+          scale: 1.01,
           ease: Back.easeOut.config(10)
         })
       },
@@ -71,12 +77,13 @@ const Countdown = React.createClass({
      })
   },
   handleStatusChange(newStatus){
+
     this.setState({
       countDownStatus: newStatus
     })
   },
   render() {
-    let {count, countDownStatus} = this.state
+    let {count, countDownStatus} = this.state  // en le passant en props, control a acces au 'paused et started'
     let renderControlArea = () => {
       if(countDownStatus !== 'stopped') {
         return <Controls countDownStatus={countDownStatus}  onStatusChange={this.handleStatusChange} /> ;
@@ -91,7 +98,7 @@ const Countdown = React.createClass({
         {renderControlArea()}
         {/*   on recoit la props de submit, fait props, qui avec la fn s occupe du data */}
         <h1 className="countdown">Countdown component</h1>
-        
+        {/*   {this.createPerson()}  */}
       </div>
     )
   }

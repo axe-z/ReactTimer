@@ -4,12 +4,12 @@ const { render, findDOMNode  } = ReactDOM;
 
 
 const CountdownForm = React.createClass({
-  
+
 onSubmit(e){
   e.preventDefault();
   let strSecondes = this.refs.secondes.value
 
-  if(strSecondes.match(/^[0-9]*$/) ) {
+  if(strSecondes.match(/^[0-9]*$/) && strSecondes !== '') {
     console.log(strSecondes)
       this.refs.secondes.value = ''
     this.props.onSetCountdown(parseInt(strSecondes, 10));    ///pour envoyer a l autre component , on fait un func sur le props.
