@@ -19,7 +19,7 @@ const Countdown = React.createClass({
      countDownStatus: 'stopped'
     }
   },
-  componentDidMount(){  ///est
+  componentDidMount(){  ///est semblable a componentWillMount, will ne trouveras pas le node
     let node =  findDOMNode(this);  ///retourne tout le div.
     let clock = node.children[0];
 
@@ -48,7 +48,7 @@ const Countdown = React.createClass({
            this.setState({count: 0})
            case  'paused' :
            clearInterval( this.timer )  //this.timer , est pour avoir acces ici dnas le switch.
-           this.timer = 'undefined'
+           this.timer =  undefined
            break
          }
        }
@@ -60,7 +60,14 @@ const Countdown = React.createClass({
         this.setState({
           count: newCount >= 0 ? newCount : 0
         })
+
+        if(newCount === 0) {
+          this.setState({
+             countDownStatus: 'stopped'
+          })
+        }
       }, 1000);
+
 
     },
     componentWillUpdate(){   ///va animer au moment que le state change  === componentDidUpdate pour anim
@@ -70,6 +77,11 @@ const Countdown = React.createClass({
           ease: Back.easeOut.config(10)
         })
       },
+    componentWillUnmount(){  //va etre lancer quand le component se fait enlever de l ecran quand on sort de countdown.
+      clearInterval( this.timer )  //this.timer , est pour avoir acces ici dnas le switch.
+      this.timer =  undefined
+      console.log('disparu!! ')  //si on va sur timer ca pop
+    },
   handleCountdown(strSecondes){  //recoit ce qui est envoye,strsecond vient de la form,
      this.setState({
        count: strSecondes ,   //c'est comme ca qu on doit rafraichhir le data

@@ -6,11 +6,14 @@ const { render, findDOMNode  } = ReactDOM;
 const Controls = React.createClass({
 
   onStatusChange(newStatus){  //currying
- 
+
      return () => {
        this.props.onStatusChange(newStatus)
      };
 
+  },
+  componentWillReceiveProps(newProps){
+    console.log('component will receivenewProps: ' + newProps.countDownStatus)
   },
   render() {
     let { countDownStatus } = this.props;

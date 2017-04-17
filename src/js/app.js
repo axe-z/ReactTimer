@@ -55,7 +55,7 @@ TweenMax.set($('.notes'), {
 //   ease: Power4.easeOut
 // });
 TweenMax.to($('.notes'), 2, {
-    x: 0,
+
     // scale: 1,
   opacity: 1,
   ease: Power4.easeOut
@@ -84,7 +84,7 @@ import _ from 'lodash';
 
 
 //=================================================================================================================================
-//video 62
+//video 62-
 import Main from './components/main'
 import Timer from './components/Timer'
 import Countdown  from './components/Countdown'
