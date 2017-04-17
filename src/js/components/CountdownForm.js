@@ -4,6 +4,7 @@ const { render, findDOMNode  } = ReactDOM;
 
 
 const CountdownForm = React.createClass({
+  
 onSubmit(e){
   e.preventDefault();
   let strSecondes = this.refs.secondes.value
@@ -23,7 +24,7 @@ onSubmit(e){
            <br />
            <input type="text" ref='secondes' className="search" placeholder="entrer le nombre de secondes"/>
            <br />
-           <button type="submit" ref="but" className="submit">calculer</button>
+           <button type="submit" ref="but" className="submit">commencer</button>
          </form>
        </div>
         )

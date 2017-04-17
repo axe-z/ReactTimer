@@ -23,7 +23,6 @@ const Main = React.createClass({
         <div>
           <div>
             <Navigation />
-            <p>Main Rendered</p>
             {this.props.children}
           </div>
         </div>

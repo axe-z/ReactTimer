@@ -423,6 +423,22 @@ importer
 </div>
 
 
+<div class="section">
+  <h2>Lifecylcle pour declencher une action</h2>
+  <li>componentDidUpdate permet de voir avec ses deux arguments, la props avanrt , et le state avant, et regarder si y a eu changement</li>
+  <li>avec un if statement, on peut regarde si y a eu changement dans le state, si oui, le switch operateur, permet de faire quelque chose avec les different scenarios. </li>
+  <pre><code>
+    c omponentWillMount: function()
+    c omponentDidMount: function()
+    c omponentWillReceiveProps: function(nextProps)
+    c omponentWillUpdate: function(nextProps, nextState)
+    c omponentDidUpdate: function(prevProps, prevState)
+    c omponentWillUnmount: function()
+  </code></pre>
+</div>
+
+
+
 </div>
 
 </body>

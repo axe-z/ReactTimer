@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 const { render, findDOMNode  } = ReactDOM;
 import Clock from './Clock'
 import CountdownForm from './CountdownForm';
+import Controls from './Controls';
+
 
 const Countdown = React.createClass({
   getInitialState(){
     return  {
-      count: 0   ///on fait un state, pour mofier une etat, 'est comme ca qu on doit rafraichhir le data
+     count: 0,   ///on fait un state, pour mofier une etat, 'est comme ca qu on doit rafraichhir le data
+     countDownStatus: 'stopped'
     }
   },
   componentDidMount(){  ///est
@@ -18,37 +21,77 @@ const Countdown = React.createClass({
 
     var tl = new TimelineMax({paused: true});
     tl.from(node,2,{
-      opacity: 0,  x:  50,  delay: 0.2,  filter: 'blur(5px)', rotationY: 0, y: 300, scale: 2,
+      opacity: 0,  x:  -10,  delay: 0.9,  filter: 'blur(5px)', rotationY: 0, y: 300, scale: 2,
       ease: Expo.easeOut
     })
     tl.from(clock, 0.3, {
       rotationY: '180deg',
       delay: -1.5,
-
+      ease: Power4.easeInOut
     })
    .play()
       },
-      componentWillUpdate(){   ///va animer au moment que le state change
+  componentDidUpdate(prevProps, prevState){   ///va animer au moment que le state change
+
+     if(this.state.countDownStatus !==  prevState.countDownStatus) {  // veut dire qu il y a eu transfo  de stpped ou started, ou..
+         switch (this.state.countDownStatus){
+           case 'started' :
+           this.startTimer()
+           break;
+           case  'stopped' :
+           this.setState({count: 0})
+           case  'paused' :
+           clearInterval(this.timer)
+           this.timmer = 'undefined'
+           break
+         }
+       }
+      },
+    startTimer(){
+
+         this.timer = setInterval(() => {
+        let newCount = this.state.count - 1;
+        this.setState({
+          count: newCount >= 0 ? newCount : 0
+        })
+      }, 1000);
+
+    },
+    componentWillUpdate(){   ///va animer au moment que le state change  === componentDidUpdate pour anim
         let node =  findDOMNode(this);  ///retourne tout le div.
-        TweenMax.from(node,2,{
-          scale: 1.045,
-          //y: -25,
-          ease: Back.easeOut.config(5)
+        TweenMax.from(node,0.99,{
+          scale: 1.004,
+          ease: Back.easeOut.config(10)
         })
       },
   handleCountdown(strSecondes){  //recoit ce qui est envoye,strsecond vient de la form,
      this.setState({
-       count: strSecondes    //c'est comme ca qu on doit rafraichhir le data
+       count: strSecondes ,   //c'est comme ca qu on doit rafraichhir le data
+       countDownStatus: 'started'
      })
   },
+  handleStatusChange(newStatus){
+    this.setState({
+      countDownStatus: newStatus
+    })
+  },
   render() {
-    let {count} = this.state
+    let {count, countDownStatus} = this.state
+    let renderControlArea = () => {
+      if(countDownStatus !== 'stopped') {
+        return <Controls countDownStatus={countDownStatus}  onStatusChange={this.handleStatusChange} /> ;
+      } else {
+        return  <CountdownForm onSetCountdown={this.handleCountdown} />;
+      }
+    }
+
     return (
       <div className="component">
         <Clock totalSecondes={this.state.count} />
-        <CountdownForm onSetCountdown={this.handleCountdown} />
+        {renderControlArea()}
         {/*   on recoit la props de submit, fait props, qui avec la fn s occupe du data */}
-          <h1 className="countdown">Countdown component</h1>
+        <h1 className="countdown">Countdown component</h1>
+        
       </div>
     )
   }

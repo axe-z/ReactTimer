@@ -298,7 +298,8 @@ h1.countdown {
 button.submit {
   width: 300px;
   height: 40px;
-  color: #2577ab;
+  color: #8b8b8b;
+  line-height: 36px;
   margin-top: 20px;
   background: #e3e3e3 !important;
   background-color: #e3e3e3 !important;
@@ -317,12 +318,12 @@ button.submit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 14rem;
+  height: 19rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   margin: 4rem auto;
-  width: 14rem;
+  width: 19rem;
   transition: all 0.35s ease-in-out;
   -webkit-transition: all 0.35s ease-in-out; }
   .clock .clock-text {
@@ -331,4 +332,21 @@ button.submit {
     font-weight: 100;
     text-align: center;
     font-family: "NexaThin";
-    line-height: 14rem; }
+    line-height: 19rem; }
+
+.controls .bb {
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  font-family: "NexaRegular";
+  color: #8b8b8b;
+  margin: 10px;
+  background: #e3e3e3 !important;
+  background-color: #e3e3e3 !important;
+  border: 1px solid #2577ab;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  letter-spacing: 0px; }
+  .controls .bb:hover {
+    background-color: #fafafa !important;
+    letter-spacing: 1px; }
