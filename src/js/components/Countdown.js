@@ -103,7 +103,11 @@ const Countdown = React.createClass({
         return  <CountdownForm onSetCountdown={this.handleCountdown} />;
       }
     }
-
+   
+    $('input').on('click', function (){
+      $(this).toggleClass('test');
+      console.log(this)
+    })
     return (
       <div className="component">
         <Clock totalSecondes={this.state.count} />

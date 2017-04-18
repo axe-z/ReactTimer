@@ -1,4 +1,9 @@
 .test {
+
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  width: 350px !important;
+  color: white !important;
   background: black;
 }
 .controls{

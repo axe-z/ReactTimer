@@ -125,6 +125,8 @@ outline: none !important;
   height: 40px;
   text-align: center;
   padding-left: 10px;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
 }
 .but {
   width: 150px;
@@ -168,7 +170,7 @@ p {
    -webkit-transition: all 0.35s ease-in-out;
  }
  .lien:first-child {
-   margin-left: -50px;
+   margin-left: -20px;
    font-family: "NexaBlack";
    color: rgb(1, 136, 203);
  }
