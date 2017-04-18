@@ -109,7 +109,7 @@ const Countdown = React.createClass({
         <Clock totalSecondes={this.state.count} />
         {renderControlArea()}
         {/*   on recoit la props de submit, fait props, qui avec la fn s occupe du data */}
-        <h1 className="countdown">Countdown component</h1>
+        <h1 className="countdown">Countdown App</h1>
         {/*   {this.createPerson()}  */}
       </div>
     )
